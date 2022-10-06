@@ -4,14 +4,42 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- FAVICON -->
+        <link rel="shortcut icon" href="./IMG/favicon.ico" type="image/x-icon">
         <!-- CSS -->
+        <link rel="stylesheet" href="./css/bootstrap.min.css">
         <link rel="stylesheet" href="./css/index.css">
         <title>PRUEBA DE APIs</title>
     </head>
     <body>
-        <h1>HOLA MUNDO</h1>
-        
+        <div id="contenedor-principal" class="container bg-dark">
+            <h1 class="text-center">CONSUMO DE API-REST</h1>
+            <hr>
+            <div id="contenedor" class="contenedor d-flex flex-wrap justify-content-evenly">
+                <div id="opciones" class="opciones">
+                    <h3 class="text-center">SELECCIONA UNA OPCIÓN</h3>
+                </div>
+                <div id="resultado" class="resultado">
+                    <h3 class="text-center">RESULTADO</h3>
+                </div>
+            </div>
+
+
+
+
+            <!-- <form id="form" action="/api/productosput" method="POST">
+                <input id="form-id" name="id_producto" type="number" placeholder="ESCRIBE EL ID" required>
+                <input id="form-nombre" name="nombre_producto" type="text" placeholder="NOMBRE" >
+                <input id="form-marca" name="marca_producto" type="text" placeholder="MARCA" >
+                <input id="form-existencias" name="numero_existencias" type="number" placeholder="EXISTENCIAS" >
+                <button id="enviar-datos" type="submit"> ENVIAR DATOS</button>
+            </form> 
+            <hr>
+            <div id="div-formulario" class="div-formulario"></div>
+            <button type="button" id="btnResultado">CLICK HERE!</button>
+            <div id="resultados" class="resultados"></div>  -->
+        </div>
         <!-- SCRPIT -->
-        <script src="./js/index.js"></script>
+        <script type="module" src="./js/index.js"></script>
     </body>
 </html>

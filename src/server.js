@@ -27,8 +27,6 @@ app.use(express.json());
 app.use(indexRoutes);
 app.use('/api',productosRoutes);
 
-
-
 app.listen(5050, () => {
     console.log('Servidor escuchando en el puerto 5050...');
 });

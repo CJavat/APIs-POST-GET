@@ -6,9 +6,11 @@ router.get('/productos', getProductos);
 
 router.post('/productos', postProductos);
 
-router.put('/productos', putProductos);
+// router.put('/productos', putProductos);
+router.post('/productosput', putProductos);
 
-router.delete('/productos', deleteProductos);
+// router.delete('/productosdel', deleteProductos); // NO HE ENCONTRADO EL MÉTODO PARA EL .delete
+router.post('/productosdel', deleteProductos);
 
 
 module.exports.router = router;
