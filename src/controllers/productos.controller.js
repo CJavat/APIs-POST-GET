@@ -21,8 +21,12 @@ const postProductos = async (req, res) => {
 // UPDATE productos SET nombre_producto='Nuevo valor', marca_producto='Nuevo valor', numero_existencias=2 WHERE id_producto = 1;
 const putProductos = async (req, res) => {
     let {id_producto, nombre_producto, marca_producto, numero_existencias} = req.body;
-    
     const [ rows ] = await pool.query(`SELECT * FROM productos WHERE id_producto = ${id_producto}`);
+    
+    if(rows[0] === undefined) {
+        return res.status(500).send('no se encontraron datos');
+    }
+
     const nombreSQL = rows[0].nombre_producto;
     const marcaSQL = rows[0].marca_producto;
     const existenciasSQL = rows[0].numero_existencias;

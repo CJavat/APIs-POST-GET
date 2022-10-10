@@ -1,10 +1,14 @@
 const express = require('express');
+const favicon = require('serve-favicon');
 const app = express();
 const productosRoutes = require('./routes/productos.routes').router;
 const indexRoutes = require('./routes/index.routes.js').router;
 
 //* AGREGAR PÁGINA ESTÁTICA
 app.use(express.static('public'));
+
+//* AGREGAR FAVICON A TODAS LAS PÁGINAS.
+app.use(favicon('public/IMG/favicon.ico'));
 
 //* MIDDLEWARE - Para darle acceso al core de que pueda manipular MYSQL.
 app.use((req, res, next) => {
@@ -17,6 +21,7 @@ app.use((req, res, next) => {
 
 //* MIDDLEWARE - Sirve para parsear el body del POST para poderlo obtener.
 const bodyParser = require('body-parser');
+const { application } = require('express');
 app.use(bodyParser.urlencoded({ extended: false }));
 
 //* Recibe los datos y los convierte en JSON para después mandarlos a las rutas siguientes.

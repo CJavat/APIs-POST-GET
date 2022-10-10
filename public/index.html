@@ -18,27 +18,26 @@
             <div id="contenedor" class="contenedor d-flex flex-wrap justify-content-evenly">
                 <div id="opciones" class="opciones">
                     <h3 class="text-center">SELECCIONA UNA OPCIÓN</h3>
-                    
+                    <ul class="list-group list-group-flush text-center">
+                        <li class="list-group-item bg-dark">
+                            <button type="button" id="opc-get" class="opc-get btn">GET</button>
+                        </li>
+                        <li class="list-group-item bg-dark">
+                            <button type="button" id="opc-post" class="opc-post btn">POST</button>
+                        </li>
+                        <li class="list-group-item bg-dark">
+                            <button type="button" id="opc-put" class="opc-put btn">PUT</button>
+                        </li>
+                        <li class="list-group-item bg-dark">
+                            <button type="button" id="opc-delete" class="opc-delete btn">DELETE</button>
+                        </li>
+                    </ul>
                 </div>
                 <div id="resultado" class="resultado">
-                    <h3 class="text-center">RESULTADO</h3>
+                    <h3 id="subtitulo-resultado" class="text-center">RESULTADO</h3>
+                    <div id="mostrar-resultado" class="mostrar-resultado d-flex flex-wrap justify-content-center"></div>
                 </div>
             </div>
-
-
-
-
-            <!-- <form id="form" action="/api/productosput" method="POST">
-                <input id="form-id" name="id_producto" type="number" placeholder="ESCRIBE EL ID" required>
-                <input id="form-nombre" name="nombre_producto" type="text" placeholder="NOMBRE" >
-                <input id="form-marca" name="marca_producto" type="text" placeholder="MARCA" >
-                <input id="form-existencias" name="numero_existencias" type="number" placeholder="EXISTENCIAS" >
-                <button id="enviar-datos" type="submit"> ENVIAR DATOS</button>
-            </form> 
-            <hr>
-            <div id="div-formulario" class="div-formulario"></div>
-            <button type="button" id="btnResultado">CLICK HERE!</button>
-            <div id="resultados" class="resultados"></div>  -->
         </div>
         <!-- SCRPIT -->
         <script type="module" src="./js/index.js"></script>

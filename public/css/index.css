@@ -2,19 +2,106 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: #fff;
+    list-style: none;
+    text-decoration: none;
 }
 
 body {
     background-color: #000;
+    color: #fff
 }
 
 .opciones {
     border: 1px solid #000;
     width: 50%;
+    color: #fff
+}
+
+.opc-get {
+    border: 1px solid #fff;
+    color: #fff;
+}
+.opc-post {
+    border: 1px solid #fff;
+    color: #fff;
+}
+.opc-put {
+    border: 1px solid #fff;
+    color: #fff;
+}
+.opc-delete {
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+.opc-get:hover {
+    color: #f00;
+}
+.opc-post:hover {
+    color: #f00;
+}
+.opc-put:hover {
+    color: #f00;
+}
+.opc-delete:hover {
+    color: #f00;
+}
+
+.opc-get:focus {
+    color: #3232fd;
+}
+.opc-post:focus {
+    color: #3232fd;
+}
+.opc-put:focus {
+    color: #3232fd;
+}
+.opc-delete:focus {
+    color: #3232fd;
 }
 
 .resultado {
     border: 1px solid #000;
     width: 50%;
+}
+
+.estilo-nodos {
+    border: 1px solid #fff;
+    border-radius: 5px;
+    margin: 0.5rem 1rem;
+    padding: 0.7rem;
+    width: 25%;
+    text-align: justify;
+}
+
+.estilo-nodos p{
+    padding: 0;
+    margin: 0;
+}
+
+.estilo-nodos:hover {
+    background-color: #a90000;
+}
+
+.estilo-formulario {
+    width: 50%;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.estilo-formulario input {
+    margin: .5rem 0;
+}
+
+.estilo-formulario input:first-child {
+    width: 20%;
+}
+
+.estilo-formulario button {
+    border: 1px solid #fff;
+    color: #fff;
+    width: 50%;
+}
+.estilo-formulario button:hover {
+    color: #f00;
 }
