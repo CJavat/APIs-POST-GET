@@ -93,7 +93,7 @@ body {
     margin: .5rem 0;
 }
 
-.estilo-formulario input:first-child {
+.form-id {
     width: 20%;
 }
 
@@ -108,4 +108,17 @@ body {
 
 .estilo-input-switch {
     width: 100%;
+}
+
+.estilo-input-switch input {
+    width: 10%;
+}
+
+.estilo-input-switch label {
+    font-size: 0.8rem;
+}
+
+.sin-datos {
+    color: #f00;
+    margin-top: 5rem;
 }

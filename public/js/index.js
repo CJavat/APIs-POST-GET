@@ -12,37 +12,27 @@ const documentFragment = document.createDocumentFragment();
 const subtituloResultado = document.getElementById('subtitulo-resultado');
 
 const crearCheckSwitch = () => {
-    const div = document.createElement('DIV');
-    const input = document.createElement('INPUT');
-    const label = document.createElement('LABEL');
+    const divCheckSwitch = document.createElement('DIV');
+    const inputCheckSwitch = document.createElement('INPUT');
+    const labelCheckSwitch = document.createElement('LABEL');
 
-    div.classList.add("form-check");
-    div.classList.add("form-switch");
-    div.classList.add("estilo-input-switch"); // DARLE ESTILO PRIMOER AL SWITCH PARA QUE SE VEA BONITO Y LUYEGO HACER LA ACCION.
-    input.classList.add("form-check-input");
-    label.classList.add("form-check-label");
+    divCheckSwitch.classList.add("form-check");
+    divCheckSwitch.classList.add("form-switch");
+    divCheckSwitch.classList.add("estilo-input-switch");
+    inputCheckSwitch.classList.add("form-check-input");
+    labelCheckSwitch.classList.add("form-check-label");
 
-    input.setAttribute("type", "checkbox");
-    input.setAttribute("role", "switch");
-    input.setAttribute("id", "flexSwitchCheckDefault");
-    
-    input.addEventListener("change", () => {
-        if(switchActivado === false) {
-            switchActivado = true;
-        }
-        else if(switchActivado === true) {
-            switchActivado = false;
-        }
-        console.log(switchActivado);
-    });
+    inputCheckSwitch.setAttribute("type", "checkbox");
+    inputCheckSwitch.setAttribute("role", "switch");
+    inputCheckSwitch.setAttribute("id", "flexSwitchCheckDefault");
 
-    label.setAttribute("for", "flexSwitchCheckDefault");
-    label.textContent = "SELECCIONA PARA ELIMINAR TODOS LOS REGISTROS";
+    labelCheckSwitch.setAttribute("for", "flexSwitchCheckDefault");
+    labelCheckSwitch.textContent = "SELECCIONA PARA ELIMINAR TODOS LOS REGISTROS";
 
-    div.appendChild(input);
-    div.appendChild(label);
+    divCheckSwitch.appendChild(inputCheckSwitch);
+    divCheckSwitch.appendChild(labelCheckSwitch);
 
-    return div;
+    return divCheckSwitch;
 };
 
 const crearFormulario = () => {
@@ -95,17 +85,35 @@ const crearFormulario = () => {
     }
     else if(banderaDelete) {
         banderaDelete = false;
+
         const obtenerCheckSwitch = crearCheckSwitch();
+        obtenerCheckSwitch.addEventListener("change", () => {
+            if(switchActivado === false) {
+                switchActivado = true; // CHECK SWITCH ACTIVADO.
+                inputId.setAttribute("disabled", "");
+                inputId.removeAttribute("enabled");
+                inputId.removeAttribute("required");
+                form.setAttribute("action", "/api/productosdelall");
+            }
+            else if(switchActivado === true) {
+                switchActivado = false; // CHECK SWITCH DESACTIVADO.
+                inputId.setAttribute("enabled", "");
+                inputId.setAttribute("required", "");
+                inputId.removeAttribute("disabled");
+                form.setAttribute("action", "/api/productosdel");
+            }
+        });
+
         form.appendChild(obtenerCheckSwitch);
         form.setAttribute("action", "/api/productosdel");
-        inputId.setAttribute("required", "");
         inputNombre.setAttribute("disabled", "");
         inputMarca.setAttribute("disabled", "");
         inputExistencias.setAttribute("disabled", "");
     }
 
-    buttonEnviar.classList.add("btn");
     form.classList.add("estilo-formulario");
+    inputId.classList.add("form-id");
+    buttonEnviar.classList.add("btn");
 
     form.appendChild(inputId);
     form.appendChild(inputNombre);
@@ -149,11 +157,25 @@ btnGet.addEventListener('click', async () => {
     subtituloResultado.innerHTML = 'RESULTADO (OBTENER DATOS / GET)';
 
     const datos = await obtenerDatos();
+    const longitudDatos = datos.length;
 
-    for(let dato of datos) {
-        const nodoCreado = crearNodos(dato.id_producto,dato.nombre_producto,dato.marca_producto,dato.numero_existencias);
-        documentFragment.appendChild(nodoCreado);
+    if(longitudDatos > 0) {
+        for(let dato of datos) {
+            const nodoCreado = crearNodos(dato.id_producto,dato.nombre_producto,dato.marca_producto,dato.numero_existencias);
+            documentFragment.appendChild(nodoCreado);
+        }
     }
+    else {
+        const divResultado = document.createElement("DIV");
+        const etiqueta = document.createElement("P");
+
+        divResultado.classList.add("sin-datos");
+        etiqueta.innerHTML = "NO HAY DATOS REGISTRADOS AÚN.";
+
+        divResultado.appendChild(etiqueta);
+        documentFragment.appendChild(divResultado);
+    }
+    
     divResultado.appendChild(documentFragment);
 });
 

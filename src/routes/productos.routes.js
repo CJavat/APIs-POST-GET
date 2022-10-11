@@ -12,6 +12,6 @@ router.post('/productosput', putProductos);
 // router.delete('/productosdel', deleteProductos); // NO HE ENCONTRADO EL MÉTODO PARA EL .delete
 router.post('/productosdel', deleteProductos);
 
-router.post('/productos', deleteAllProducts);
+router.post('/productosdelall', deleteAllProducts);
 
 module.exports.router = router;
