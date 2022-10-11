@@ -1,4 +1,5 @@
 let banderaPut = false, banderaPost = false, banderaDelete = false;
+let switchActivado = false;
 
 const btnGet = document.getElementById('opc-get');
 const btnPost = document.getElementById('opc-post');
@@ -9,6 +10,40 @@ const divResultado = document.getElementById('mostrar-resultado');
 const documentFragment = document.createDocumentFragment();
 
 const subtituloResultado = document.getElementById('subtitulo-resultado');
+
+const crearCheckSwitch = () => {
+    const div = document.createElement('DIV');
+    const input = document.createElement('INPUT');
+    const label = document.createElement('LABEL');
+
+    div.classList.add("form-check");
+    div.classList.add("form-switch");
+    div.classList.add("estilo-input-switch"); // DARLE ESTILO PRIMOER AL SWITCH PARA QUE SE VEA BONITO Y LUYEGO HACER LA ACCION.
+    input.classList.add("form-check-input");
+    label.classList.add("form-check-label");
+
+    input.setAttribute("type", "checkbox");
+    input.setAttribute("role", "switch");
+    input.setAttribute("id", "flexSwitchCheckDefault");
+    
+    input.addEventListener("change", () => {
+        if(switchActivado === false) {
+            switchActivado = true;
+        }
+        else if(switchActivado === true) {
+            switchActivado = false;
+        }
+        console.log(switchActivado);
+    });
+
+    label.setAttribute("for", "flexSwitchCheckDefault");
+    label.textContent = "SELECCIONA PARA ELIMINAR TODOS LOS REGISTROS";
+
+    div.appendChild(input);
+    div.appendChild(label);
+
+    return div;
+};
 
 const crearFormulario = () => {
     const form = document.createElement('FORM');
@@ -60,6 +95,8 @@ const crearFormulario = () => {
     }
     else if(banderaDelete) {
         banderaDelete = false;
+        const obtenerCheckSwitch = crearCheckSwitch();
+        form.appendChild(obtenerCheckSwitch);
         form.setAttribute("action", "/api/productosdel");
         inputId.setAttribute("required", "");
         inputNombre.setAttribute("disabled", "");

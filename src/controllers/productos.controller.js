@@ -48,7 +48,14 @@ const deleteProductos = async (req, res) => {
     res.status(204, res.redirect('/'));
 };
 
+const deleteAllProducts = async (req, res) => {
+    const [ result ] = await pool.query('DELETE * FROM productos');
+    console.log(result);
+    res.status(204, res.redirect('/'));
+};
+
 module.exports.getProductos = getProductos;
 module.exports.postProductos = postProductos;
 module.exports.putProductos = putProductos;
 module.exports.deleteProductos = deleteProductos;
+module.exports.deleteAllProducts = deleteAllProducts;

@@ -105,3 +105,7 @@ body {
 .estilo-formulario button:hover {
     color: #f00;
 }
+
+.estilo-input-switch {
+    width: 100%;
+}
