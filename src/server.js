@@ -21,7 +21,6 @@ app.use((req, res, next) => {
 
 //* MIDDLEWARE - Sirve para parsear el body del POST para poderlo obtener.
 const bodyParser = require('body-parser');
-const { application } = require('express');
 app.use(bodyParser.urlencoded({ extended: false }));
 
 //* Recibe los datos y los convierte en JSON para después mandarlos a las rutas siguientes.
